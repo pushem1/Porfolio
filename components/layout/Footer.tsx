@@ -10,9 +10,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="text-lg font-semibold">John Doe</h3>
+            <h3 className="text-lg font-semibold">WebDZ Services</h3>
             <p className="mt-4 text-sm text-muted-foreground">
-              Creating digital experiences that delight users and solve real problems.
+              Crafting digital experiences that delight users and solve real problems.
             </p>
           </div>
 
@@ -48,12 +48,12 @@ export default function Footer() {
               Feel free to reach out for collaborations or just a friendly hello.
             </p>
             <Button className="mt-4" size="sm">
-              <Link href="#contact">Contact Me</Link>
+              <Link href="#contact">Contact Us</Link>
             </Button>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold">Follow Me</h3>
+            <h3 className="text-lg font-semibold">Follow Us</h3>
             <div className="mt-4 flex space-x-4">
               <Button variant="ghost" size="icon" aria-label="GitHub">
                 <Github className="h-5 w-5" />
@@ -73,7 +73,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t pt-8">
           <p className="text-center text-xs text-muted-foreground">
-            © {currentYear} John Doe. All rights reserved.
+            © {currentYear} Webdz Services. All rights reserved.
           </p>
         </div>
       </div>

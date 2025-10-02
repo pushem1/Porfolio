@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +13,7 @@ const projects = [
     id: 1,
     title: "Car Agency",
     description: "A luxury car showroom website showcasing premium vehicles with a modern and elegant design.",
-    image: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "/Images/agency.png",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
     demoLink: "https://car-agency-g5aj.vercel.app/",
     category: "web"
@@ -23,7 +22,7 @@ const projects = [
     id: 2,
     title: "Élégance Meuble",
     description: "A sophisticated furniture website featuring custom-made furniture and interior design services.",
-    image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "/Images/meuble.png",
     tags: ["React", "Modern UI", "Responsive Design", "Custom Design"],
     demoLink: "https://elegance-meuble.vercel.app/",
     category: "web"
@@ -32,7 +31,7 @@ const projects = [
     id: 3,
     title: "Change App",
     description: "A modern application focused on currency exchange and financial management.",
-    image: "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "/Images/hassa.png",
     tags: ["Next.js", "TypeScript", "API Integration", "Real-time Data"],
     demoLink: "https://changeapp.vercel.app/",
     category: "web"
@@ -45,23 +44,19 @@ const projects = [
     tags: ["React", "Data Visualization", "Environmental Tech", "Responsive"],
     demoLink: "https://ecotrack22.netlify.app/",
     category: "web"
+  },
+  {
+    id: 5,
+    title: "ML Performance",
+    description: "A comprehensive machine learning performance monitoring and optimization platform for tracking model metrics and deployment efficiency.",
+    image: "/Images/mlperf.png",
+    tags: ["Machine Learning", "Python", "Data Science", "Performance Monitoring", "Analytics"],
+    demoLink: "https://ml-performance.com",
+    category: "web"
   }
 ];
 
-// Filter categories
-const categories = [
-  { value: "all", label: "All Projects" },
-  { value: "web", label: "Web Development" },
-  { value: "mobile", label: "Mobile Apps" },
-  { value: "design", label: "UI/UX Design" }
-];
-
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState("all");
-  
-  const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
 
   return (
     <section id="projects" className="py-24">
@@ -73,30 +68,16 @@ export default function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">My Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Our Projects</h2>
           <div className="mt-4 h-1 w-20 bg-primary mx-auto rounded-full"></div>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
-            Here's a selection of projects I've worked on. Each one presented unique challenges and opportunities for growth.
+            Here's a selection of projects we've worked on. Each one presented unique challenges and opportunities for growth.
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category, index) => (
-            <Button
-              key={index}
-              variant={filter === category.value ? "default" : "outline"}
-              onClick={() => setFilter(category.value)}
-              className="transition-all"
-            >
-              {category.label}
-            </Button>
-          ))}
-        </div>
-
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -115,7 +96,7 @@ export default function ProjectsSection() {
                       <Button size="sm" variant="secondary">
                         <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
                           <ExternalLink className="h-4 w-4 mr-1" />
-                          Demo
+                          View Demo
                         </Link>
                       </Button>
                     </div>
@@ -130,11 +111,6 @@ export default function ProjectsSection() {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="px-6 pb-6 pt-0">
-                  <Button variant="outline" size="sm" className="w-full">
-                    <Link href={`#project-${project.id}`} className="w-full">View Details</Link>
-                  </Button>
-                </CardFooter>
               </Card>
             </motion.div>
           ))}

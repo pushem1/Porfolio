@@ -83,7 +83,7 @@ export default function SkillsSection() {
           <h2 className="text-3xl md:text-4xl font-bold">Skills & Expertise</h2>
           <div className="mt-4 h-1 w-20 bg-primary mx-auto rounded-full"></div>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
-            My technical toolkit includes a diverse range of languages, frameworks, and tools that I've mastered over the years.
+            Our technical toolkit includes a diverse range of languages, frameworks, and tools that we've mastered over the years.
           </p>
         </motion.div>
 
@@ -175,7 +175,7 @@ export default function SkillsSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-16"
         >
-          <h3 className="text-xl font-semibold text-center mb-8">Technologies I Work With</h3>
+          <h3 className="text-xl font-semibold text-center mb-8">Technologies We Work With</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-6">
             {techStack.map((tech, index) => (
               <div key={index} className="flex flex-col items-center">

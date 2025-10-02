@@ -30,26 +30,29 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              <span className="block">Hello, I'm</span>
-              <span className="block mt-2 text-primary">John Doe</span>
+              <span className="block">Hello, We're</span>
+              <span className="block mt-2 text-primary line-through opacity-50">Developers</span>
+              <span className="block mt-2 text-primary text-5xl md:text-6xl lg:text-7xl">ARTISTS</span>
             </h1>
-            
+
             <h2 className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground">
-              Full-Stack Developer & UX Designer
+              Artists in Code & Design
             </h2>
-            
+
             <p className="mt-4 text-lg max-w-xl text-muted-foreground">
-              I craft beautiful, functional digital experiences that solve real-world problems and delight users.
+              We approach development as an art form, crafting digital experiences that blend technical excellence with creative vision to solve real-world problems beautifully.
             </p>
-            
+
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" className="group">
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button size="lg" className="group" asChild>
+                <Link href="#projects">
+                  View Our Work
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg">
-                <Link href="#contact">Contact Me</Link>
+                <Link href="#contact">Contact Us</Link>
               </Button>
             </div>
           </motion.div>
@@ -62,10 +65,17 @@ export default function HeroSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-2xl overflow-hidden">
               <div className="absolute inset-0 backdrop-blur-[2px] flex items-center justify-center">
-                <div className="w-3/4 aspect-square rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 absolute blur-3xl"></div>
+                <div className="w-3/4 aspect-square rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 absolute blur-3xl animate-pulse"></div>
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  {/* Hero image can be placed here */}
-                  <div className="w-full h-full bg-[url('https://images.pexels.com/photos/4064835/pexels-photo-4064835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] bg-cover bg-center rounded-2xl"></div>
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-primary/60 to-secondary/60 flex items-center justify-center mb-4 mx-auto">
+                      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Code & Creativity</h3>
+                    <p className="text-sm text-white/80">Development as art</p>
+                  </div>
                 </div>
               </div>
             </div>

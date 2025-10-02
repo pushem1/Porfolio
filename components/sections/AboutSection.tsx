@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -22,7 +23,7 @@ export default function AboutSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">About Us</h2>
           <div className="mt-4 h-1 w-20 bg-primary mx-auto rounded-full"></div>
         </motion.div>
 
@@ -35,27 +36,28 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold">
-              A passionate developer with an eye for design
+              Passionate developers with an eye for design
             </h3>
-            
+
             <p className="text-muted-foreground">
-              With over 5 years of experience in web and mobile development, I've had the pleasure of working with businesses ranging from startups to Fortune 500 companies. My passion lies in creating intuitive, accessible, and performant digital experiences that solve real problems.
+              With combined experience in web and mobile development, we've had the pleasure of working with businesses ranging from startups to Fortune 500 companies. Our passion lies in creating intuitive, accessible, and performant digital experiences that solve real problems.
             </p>
-            
+
             <p className="text-muted-foreground">
-              I specialize in modern JavaScript frameworks like React, Next.js, and Node.js, with a strong foundation in UI/UX design principles. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
+              We specialize in modern JavaScript frameworks like React, Next.js, and Node.js, with a strong foundation in UI/UX design principles. Our approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
             </p>
-            
+
             <p className="text-muted-foreground">
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. I believe in continuous learning and staying at the forefront of industry trends.
+              When we're not coding, you'll find us exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. We believe in continuous learning and staying at the forefront of industry trends.
             </p>
             
             <div className="pt-4 flex flex-wrap gap-4">
-              <Button>
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
+              <Button asChild>
+                <Link href="#projects">
+                  <Download className="mr-2 h-4 w-4" />
+                  View Portfolio
+                </Link>
               </Button>
-              <Button variant="outline">My Journey</Button>
             </div>
           </motion.div>
           
