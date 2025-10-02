@@ -1,6 +1,5 @@
 "use client";
 
-import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "@/components/motion";
@@ -112,7 +111,12 @@ export default function SkillsSection() {
                         <span className="text-sm font-medium">{skill.name}</span>
                         <span className="text-sm text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
+                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-primary transition-all duration-500 ease-out"
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </TabsContent>
