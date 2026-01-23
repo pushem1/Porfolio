@@ -40,7 +40,7 @@ export default function AboutSection() {
             </h3>
 
             <p className="text-muted-foreground">
-              With combined experience in web and mobile development, we've had the pleasure of working with businesses ranging from startups to Fortune 500 companies. Our passion lies in creating intuitive, accessible, and performant digital experiences that solve real problems.
+              With combined experience in web and mobile development, our passion lies in creating intuitive, accessible, and performant digital experiences that solve real problems.
             </p>
 
             <p className="text-muted-foreground">

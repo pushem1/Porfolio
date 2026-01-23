@@ -4,6 +4,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { motion } from "@/components/motion";
 import { ExternalLink } from "lucide-react";
 
@@ -78,45 +87,89 @@ export default function ProjectsSection() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
-            >
-              <Card className="group h-full overflow-hidden border bg-card/60 shadow-sm transition-all hover:shadow-xl">
-                <div className="relative h-48 overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="flex gap-3">
-                      <Button size="sm" variant="secondary">
+            <Dialog key={project.id}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -6 }}
+              >
+                <Card className="group h-full overflow-hidden border bg-card/60 shadow-sm transition-all hover:shadow-xl">
+                  <div className="relative h-48 overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                      whileHover={{ scale: 1.08 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="flex gap-3">
+                        <Button size="sm" variant="secondary">
+                          <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                            <ExternalLink className="h-4 w-4 mr-1" />
+                            View Demo
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <Badge key={i} variant="secondary" className="text-xs">{tag}</Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="px-6 pb-6 pt-0">
+                    <div className="flex flex-wrap gap-3">
+                      <DialogTrigger asChild>
+                        <Button size="sm" variant="outline">Case Study</Button>
+                      </DialogTrigger>
+                      <Button size="sm" asChild>
                         <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                          <ExternalLink className="h-4 w-4 mr-1" />
-                          View Demo
+                          Live Demo
+                          <ExternalLink className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                     </div>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+              <DialogContent className="max-w-2xl">
+                <div className="space-y-5">
+                  <div className="relative h-56 w-full overflow-hidden rounded-lg">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <DialogHeader>
+                    <DialogTitle>{project.title}</DialogTitle>
+                    <DialogDescription>{project.description}</DialogDescription>
+                  </DialogHeader>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, i) => (
                       <Badge key={i} variant="secondary" className="text-xs">{tag}</Badge>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild>
+                      <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                        View Live Demo
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <DialogClose asChild>
+                      <Button variant="outline">Close</Button>
+                    </DialogClose>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
       </div>

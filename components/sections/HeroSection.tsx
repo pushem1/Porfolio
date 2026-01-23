@@ -3,11 +3,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "@/components/motion";
+import { useScroll, useTransform } from "framer-motion";
 import { ArrowDownCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const { scrollY } = useScroll();
+  const orbOneY = useTransform(scrollY, [0, 600], [0, -60]);
+  const orbTwoY = useTransform(scrollY, [0, 600], [0, -40]);
+  const orbThreeY = useTransform(scrollY, [0, 600], [0, -20]);
+  const heroCardY = useTransform(scrollY, [0, 600], [0, -24]);
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -35,9 +41,18 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
       <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl float-slow" />
-        <div className="absolute top-1/3 -left-16 h-60 w-60 rounded-full bg-secondary/20 blur-3xl float-medium" />
-        <div className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-accent/20 blur-3xl float-fast" />
+        <motion.div
+          className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl float-slow"
+          style={{ y: orbOneY }}
+        />
+        <motion.div
+          className="absolute top-1/3 -left-16 h-60 w-60 rounded-full bg-secondary/20 blur-3xl float-medium"
+          style={{ y: orbTwoY }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-accent/20 blur-3xl float-fast"
+          style={{ y: orbThreeY }}
+        />
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
@@ -80,6 +95,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            style={{ y: heroCardY }}
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-2xl overflow-hidden"

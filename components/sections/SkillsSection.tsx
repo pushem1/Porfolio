@@ -56,16 +56,41 @@ const skillCategories = [
   },
 ];
 
-// Tech stack icons (These would be imported from their respective libraries in a real project)
+// Tech stack icons (using Devicon CDN)
 const techStack = [
-  { name: "React", icon: "react.svg" },
-  { name: "Next.js", icon: "nextjs.svg" },
-  { name: "TypeScript", icon: "typescript.svg" },
-  { name: "Node.js", icon: "nodejs.svg" },
-  { name: "MongoDB", icon: "mongodb.svg" },
-  { name: "PostgreSQL", icon: "postgresql.svg" },
-  { name: "Tailwind CSS", icon: "tailwindcss.svg" },
-  { name: "AWS", icon: "aws.svg" },
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Next.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    invertOnDark: true,
+  },
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    name: "Node.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    name: "PostgreSQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  {
+    name: "AWS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+  },
 ];
 
 export default function SkillsSection() {
@@ -192,8 +217,12 @@ export default function SkillsSection() {
                 transition={{ duration: 0.2 }}
               >
                 <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-2 shadow-sm">
-                  {/* In a real project, you would use actual SVG icons or images here */}
-                  <div className="w-8 h-8 bg-primary/20 rounded-full"></div>
+                  <img
+                    src={tech.icon}
+                    alt={`${tech.name} logo`}
+                    loading="lazy"
+                    className={`h-8 w-8 ${tech.invertOnDark ? "dark:invert" : ""}`}
+                  />
                 </div>
                 <span className="text-sm text-center">{tech.name}</span>
               </motion.div>
