@@ -112,9 +112,12 @@ export default function SkillsSection() {
                         <span className="text-sm text-muted-foreground">{skill.level}%</span>
                       </div>
                       <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-primary transition-all duration-500 ease-out"
-                          style={{ width: `${skill.level}%` }}
+                        <motion.div
+                          className="h-full bg-primary"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: index * 0.06, ease: "easeOut" }}
                         />
                       </div>
                     </div>
@@ -182,13 +185,18 @@ export default function SkillsSection() {
           <h3 className="text-xl font-semibold text-center mb-8">Technologies We Work With</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-6">
             {techStack.map((tech, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-2">
+              <motion.div
+                key={index}
+                className="flex flex-col items-center"
+                whileHover={{ y: -4, scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-2 shadow-sm">
                   {/* In a real project, you would use actual SVG icons or images here */}
                   <div className="w-8 h-8 bg-primary/20 rounded-full"></div>
                 </div>
                 <span className="text-sm text-center">{tech.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

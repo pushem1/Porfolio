@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { motion } from "@/components/motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 // Project data
 const projects = [
@@ -84,14 +84,18 @@ export default function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
             >
-              <Card className="h-full overflow-hidden hover:shadow-lg transition-all">
+              <Card className="group h-full overflow-hidden border bg-card/60 shadow-sm transition-all hover:shadow-xl">
                 <div className="relative h-48 overflow-hidden">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-105"
+                  <motion.div
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${project.image})` }}
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.5 }}
                   />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div className="flex gap-3">
                       <Button size="sm" variant="secondary">
                         <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">

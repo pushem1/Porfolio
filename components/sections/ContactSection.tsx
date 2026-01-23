@@ -55,7 +55,11 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
+    <section id="contact" className="relative py-24 bg-muted/30 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-20 -left-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl float-slow" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-secondary/10 blur-3xl float-medium" />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,8 +96,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <a href="mailto:webdzservices@gmail .com" className="text-muted-foreground hover:text-primary transition-colors">
-                    webdzservice@gmail.com
+                  <a href="mailto:webdzservices@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    webdzservices@gmail.com
                   </a>
                 </div>
               </div>
@@ -104,7 +108,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <a href="tel:+213699745419  " className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="tel:+213699745417" className="text-muted-foreground hover:text-primary transition-colors">
                     +213 699 745 417
                   </a>
                 </div>

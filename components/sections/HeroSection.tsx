@@ -8,6 +8,19 @@ import Link from "next/link";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0 },
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -16,34 +29,39 @@ export default function HeroSection() {
   if (!mounted) return null;
 
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen flex flex-col justify-center pt-16"
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden"
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl float-slow" />
+        <div className="absolute top-1/3 -left-16 h-60 w-60 rounded-full bg-secondary/20 blur-3xl float-medium" />
+        <div className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-accent/20 blur-3xl float-fast" />
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="block">Hello, We're</span>
               <span className="block mt-2 text-primary line-through opacity-50">Developers</span>
               <span className="block mt-2 text-primary text-5xl md:text-6xl lg:text-7xl">ARTISTS</span>
-            </h1>
+            </motion.h1>
 
-            <h2 className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground">
+            <motion.h2 variants={itemVariants} className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground">
               Artists in Code & Design
-            </h2>
+            </motion.h2>
 
-            <p className="mt-4 text-lg max-w-xl text-muted-foreground">
+            <motion.p variants={itemVariants} className="mt-4 text-lg max-w-xl text-muted-foreground">
               We approach development as an art form, crafting digital experiences that blend technical excellence with creative vision to solve real-world problems beautifully.
-            </p>
+            </motion.p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="group" asChild>
                 <Link href="#projects">
                   View Our Work
@@ -54,7 +72,7 @@ export default function HeroSection() {
               <Button variant="outline" size="lg">
                 <Link href="#contact">Contact Us</Link>
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
           
           <motion.div 
@@ -63,7 +81,11 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-2xl overflow-hidden">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-2xl overflow-hidden"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            >
               <div className="absolute inset-0 backdrop-blur-[2px] flex items-center justify-center">
                 <div className="w-3/4 aspect-square rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 absolute blur-3xl animate-pulse"></div>
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -78,7 +100,7 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

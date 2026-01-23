@@ -50,7 +50,11 @@ export default function TestimonialsSection() {
   if (!mounted) return null;
 
   return (
-    <section id="testimonials" className="py-24">
+    <section id="testimonials" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-16 right-8 h-56 w-56 rounded-full bg-primary/10 blur-3xl float-medium" />
+        <div className="absolute bottom-0 left-10 h-72 w-72 rounded-full bg-secondary/10 blur-3xl float-slow" />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -82,8 +86,9 @@ export default function TestimonialsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="h-full"
+                  whileHover={{ y: -4 }}
                 >
-                  <Card className="h-full border bg-card shadow-sm hover:shadow-md transition-shadow">
+                  <Card className="h-full border bg-card/70 backdrop-blur-sm shadow-sm hover:shadow-lg transition-all">
                     <CardContent className="p-6 flex flex-col h-full">
                       <Quote className="h-8 w-8 text-primary/60 mb-4" />
                       <p className="text-muted-foreground mb-6 flex-1">
