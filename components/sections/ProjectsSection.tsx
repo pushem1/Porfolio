@@ -62,6 +62,15 @@ const projects = [
     tags: ["Machine Learning", "Python", "Data Science", "Performance Monitoring", "Analytics"],
     demoLink: "https://ml-performance.com",
     category: "web"
+  },
+  {
+    id: 6,
+    title: "Sultan Library",
+    description: "An ecommerce platform for Islamic books, perfumes, and gift collections with a clean shopping experience.",
+    image: "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    tags: ["Ecommerce", "Next.js", "UI/UX", "Responsive"],
+    demoLink: "https://sultanlibrary.com/",
+    category: "web"
   }
 ];
 
