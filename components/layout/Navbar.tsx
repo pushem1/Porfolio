@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Menu, X } from "lucide-react";
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Our Process", href: "#process" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
@@ -67,12 +69,19 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link 
-            href="#home" 
-            className="font-bold text-xl tracking-tight transition-colors bg-gradient-to-r from-purple-600 via-red-500 to-orange-500 text-transparent bg-clip-text"
+          <Link
+            href="#home"
+            className="flex items-center shrink-0"
             onClick={() => setIsOpen(false)}
           >
-            WEBDZ SERVICES
+            <Image
+              src="/Images/logo.png"
+              alt="WEBDZ SERVICES"
+              width={420}
+              height={105}
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain"
+              priority
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

@@ -6,6 +6,8 @@ import { motion } from "@/components/motion";
 import { useScroll, useTransform } from "framer-motion";
 import { ArrowDownCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import NeuralBackground from "@/components/ui/flow-field-background";
+import { Web3MediaHero } from "@/components/ui/web3media-hero";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -18,9 +20,7 @@ export default function HeroSection() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-      },
+      transition: { staggerChildren: 0.12 },
     },
   };
   const itemVariants = {
@@ -34,13 +34,19 @@ export default function HeroSection() {
 
   if (!mounted) return null;
 
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden"
-    >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
-      <div className="absolute inset-0 -z-10">
+  const customBackground = (
+    <>
+      <div className="absolute inset-0">
+        <NeuralBackground
+          className="opacity-40"
+          color="#8B5CF6"
+          trailOpacity={0.12}
+          particleCount={400}
+          speed={0.7}
+        />
+      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background/80 to-background/90" />
+      <div className="absolute inset-0">
         <motion.div
           className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl float-slow"
           style={{ y: orbOneY }}
@@ -54,80 +60,117 @@ export default function HeroSection() {
           style={{ y: orbThreeY }}
         />
       </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    </>
+  );
+
+  return (
+    <Web3MediaHero
+      id="home"
+      showHeader={false}
+      customBackground={customBackground}
+      title="Hello, We're"
+      highlightedText="ARTISTS"
+      subtitle="We approach development as an art form, crafting digital experiences that blend technical excellence with creative vision to solve real-world problems beautifully."
+      trustedByText="Trusted by"
+      brands={[
+        {
+          name: "SultanLibrary",
+          logo: (
+            <span className="text-sm font-semibold text-muted-foreground/80">
+              SultanLibrary
+            </span>
+          ),
+        },
+        {
+          name: "ML Performance",
+          logo: (
+            <span className="text-sm font-semibold text-muted-foreground/80">
+              ML Performance
+            </span>
+          ),
+        },
+        {
+          name: "EcoTrack",
+          logo: (
+            <span className="text-sm font-semibold text-muted-foreground/80">
+              EcoTrack
+            </span>
+          ),
+        },
+        {
+          name: "Change App",
+          logo: (
+            <span className="text-sm font-semibold text-muted-foreground/80">
+              Change App
+            </span>
+          ),
+        },
+      ]}
+      className="pt-16"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 w-full">
+        <div className="flex flex-col items-center text-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="show"
           >
-            <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
+            >
               <span className="block">Hello, We're</span>
-              <span className="block mt-2 text-primary line-through opacity-50">Developers</span>
-              <span className="block mt-2 text-primary text-5xl md:text-6xl lg:text-7xl">ARTISTS</span>
+              <span className="block mt-2 text-primary line-through opacity-50">
+                Developers
+              </span>
+              <span className="block mt-2 text-primary text-5xl md:text-6xl lg:text-7xl">
+                ARTISTS
+              </span>
             </motion.h1>
 
-            <motion.h2 variants={itemVariants} className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground">
+            <motion.h2
+              variants={itemVariants}
+              className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground"
+            >
               Artists in Code & Design
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="mt-4 text-lg max-w-xl text-muted-foreground">
-              We approach development as an art form, crafting digital experiences that blend technical excellence with creative vision to solve real-world problems beautifully.
+            <motion.p
+              variants={itemVariants}
+              className="mt-4 text-lg max-w-xl text-muted-foreground"
+            >
+              We approach development as an art form, crafting digital
+              experiences that blend technical excellence with creative vision to
+              solve real-world problems beautifully.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex flex-wrap justify-center gap-4"
+            >
               <Button size="lg" className="group" asChild>
                 <Link href="#projects">
                   View Our Work
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" asChild>
                 <Link href="#contact">Contact Us</Link>
               </Button>
             </motion.div>
           </motion.div>
+
           
-          <motion.div 
-            className="relative h-[400px] w-full hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ y: heroCardY }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-2xl overflow-hidden"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="absolute inset-0 backdrop-blur-[2px] flex items-center justify-center">
-                <div className="w-3/4 aspect-square rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 absolute blur-3xl animate-pulse"></div>
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-primary/60 to-secondary/60 flex items-center justify-center mb-4 mx-auto">
-                      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Code & Creativity</h3>
-                    <p className="text-sm text-white/80">Development as art</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
-      
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
         <Link href="#about">
           <Button variant="ghost" size="icon" aria-label="Scroll Down">
             <ArrowDownCircle className="h-6 w-6" />
           </Button>
         </Link>
       </div>
-    </section>
+    </Web3MediaHero>
   );
 }

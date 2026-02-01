@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "@/components/motion";
 import { Quote } from "lucide-react";
+import NeuralBackground from "@/components/ui/flow-field-background";
 
 // Testimonial data
 const testimonials = [
@@ -51,11 +52,18 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-16 right-8 h-56 w-56 rounded-full bg-primary/10 blur-3xl float-medium" />
-        <div className="absolute bottom-0 left-10 h-72 w-72 rounded-full bg-secondary/10 blur-3xl float-slow" />
+      {/* Same background stack as Hero & Our Process: neural flow + radial gradient */}
+      <div className="absolute inset-0 -z-20">
+        <NeuralBackground
+          className="opacity-40"
+          color="#8B5CF6"
+          trailOpacity={0.12}
+          particleCount={400}
+          speed={0.7}
+        />
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background/80 to-background/90" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
