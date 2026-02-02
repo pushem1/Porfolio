@@ -156,24 +156,10 @@ export default function SkillsSection() {
           <div className="space-y-6">
             {[
               {
-                period: "2021 - Present",
-                title: "Senior Frontend Developer",
-                company: "TechCorp Inc.",
-                description: "Leading the development of the company's flagship product using Next.js and TypeScript.",
-                delay: 0.1
-              },
-              {
-                period: "2019 - 2021",
-                title: "Full Stack Developer",
-                company: "InnovateLabs",
-                description: "Developed and maintained multiple client projects using React, Node.js, and MongoDB.",
-                delay: 0.2
-              },
-              {
-                period: "2017 - 2019",
+                period: "2022 - 2026",
                 title: "UI/UX Designer & Developer",
-                company: "DesignWorks Studio",
-                description: "Created user interfaces and implemented them with HTML, CSS, and JavaScript.",
+                company: "Freelance",
+                description: "Created multiple projects using modern technologies and frameworks.",
                 delay: 0.3
               }
             ].map((experience, index) => (
