@@ -132,7 +132,7 @@ export default function HeroSection() {
               variants={itemVariants}
               className="mt-6 text-xl md:text-2xl font-medium text-muted-foreground"
             >
-              Artists in Code & Design
+              in Code & Design
             </motion.h2>
 
             <motion.p
