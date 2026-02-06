@@ -17,9 +17,9 @@ import NeuralBackground from "@/components/ui/flow-field-background";
 const testimonials = [
   {
     id: 1,
-    quote: "The EcoTrack platform they built for us exceeded all expectations. The environmental tracking features are comprehensive and the user interface is incredibly intuitive.",
-    author: "Ahmed",
-    position: "TechnoAlgeria"
+    quote: "Service rapide et pro, produit très bien conçu. Très satisfaite, merci.",
+    author: "Amina",
+    position: "Hassalapp"
   },
   {
     id: 2,
@@ -31,13 +31,7 @@ const testimonials = [
     id: 3,
     quote: "The team's expertise in both design and development made our collaboration seamless. They truly understand how to create products that users love.",
     author: "Karim",
-    position: "DesignHub"
-  },
-  {
-    id: 4,
-    quote: "I've worked with many developers, but this team stands out for their communication skills and dedication to quality. They're now our go-to team for all projects.",
-    author: "Amina",
-    position: "GrowthTech Algeria"
+    position: "EcoTrack"
   }
 ];
 
