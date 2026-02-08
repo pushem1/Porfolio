@@ -98,10 +98,10 @@ export default function HeroSection() {
           ),
         },
         {
-          name: "Change App",
+          name: "HassalApp",
           logo: (
             <span className="text-sm font-semibold text-muted-foreground/80">
-              Change App
+              HassalApp
             </span>
           ),
         },

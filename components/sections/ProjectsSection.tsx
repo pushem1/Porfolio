@@ -38,7 +38,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "Change App",
+    title: "HassalApp",
     description: "A modern application focused on currency exchange and financial management.",
     image: "/Images/hassa.png",
     tags: ["Next.js", "TypeScript", "API Integration", "Real-time Data"],
