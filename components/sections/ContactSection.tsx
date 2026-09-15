@@ -109,7 +109,7 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-medium">Phone</h4>
                   <a href="tel:+213699745419 " className="text-muted-foreground hover:text-primary transition-colors">
-                    (+213) 699 745 419 / (+213) 558 982 625
+                     (+213) 558 982 625
                   </a>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function ContactSection() {
                 {/* Add more social links here if needed */}
               </div>
               <a
-                href="mailto:webdzservice@gmail.com"
+                href="mailto aben7400@gmail.com"
                 className="inline-block bg-primary text-white font-medium px-6 py-2 rounded hover:bg-primary/90 transition-colors"
               >
                 Send an Email

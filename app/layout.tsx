@@ -1,33 +1,18 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
+const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: 'Webdz Services | Web Development & Design',
-  description: 'Professional web development and design services by Webdz Services',
+  metadataBase: new URL("https://web-dz-services.vercel.app"),
+  title: "WEB DZ — Digital Engineering Studio",
+  description: "WEB DZ builds web, mobile and custom digital systems from Sidi Bel Abbès, Algeria.",
+  openGraph: { title: "WEB DZ — Digital Engineering Studio", description: "Web, mobile, realtime and custom digital solutions." },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en"><body className={`${inter.variable} ${space.variable} ${mono.variable}`}>{children}</body></html>;
 }

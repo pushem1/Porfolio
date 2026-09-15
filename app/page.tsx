@@ -1,21 +1,5 @@
-import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
-import TimelineSection from "@/components/sections/TimelineSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import SkillsSection from "@/components/sections/SkillsSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ContactSection from "@/components/sections/ContactSection";
+import ControlRoom from "@/components/control-room/ControlRoom";
 
 export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <TimelineSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <TestimonialsSection />
-      <ContactSection />
-    </>
-  );
+  return <ControlRoom />;
 }
