@@ -96,8 +96,11 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <a href="mailto:webdzservices@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    webdzservices@gmail.com
+                  <a href="mailto:aben7400@gmail.com" className="block text-muted-foreground hover:text-primary transition-colors">
+                    aben7400@gmail.com
+                  </a>
+                  <a href="mailto:Undrivable22@gmail.com" className="block text-muted-foreground hover:text-primary transition-colors">
+                    Undrivable22@gmail.com
                   </a>
                 </div>
               </div>
@@ -108,8 +111,11 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <a href="tel:+213699745419 " className="text-muted-foreground hover:text-primary transition-colors">
-                     (+213) 558 982 625
+                  <a href="tel:+213558982625" className="block text-muted-foreground hover:text-primary transition-colors">
+                    (+213) 055 898 2625
+                  </a>
+                  <a href="tel:+15103138848" className="block text-muted-foreground hover:text-primary transition-colors">
+                    +(1) 510 313 8848
                   </a>
                 </div>
               </div>
@@ -121,7 +127,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-medium">Location</h4>
                   <p className="text-muted-foreground">
-                   Sidi Bel Abbes, Algeria
+                   Sidi Bel Abbes, Algeria 
+                  </p>
+                  <p className="text-muted-foreground">
+                   San Francisco, USA
                   </p>
                 </div>
               </div>
@@ -144,7 +153,7 @@ export default function ContactSection() {
                 {/* Add more social links here if needed */}
               </div>
               <a
-                href="mailto aben7400@gmail.com"
+                href="mailto:aben7400@gmail.com"
                 className="inline-block bg-primary text-white font-medium px-6 py-2 rounded hover:bg-primary/90 transition-colors"
               >
                 Send an Email

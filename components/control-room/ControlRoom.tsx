@@ -2,8 +2,8 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { ArrowDown, ArrowUpRight, Code2, Mail, Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, ArrowUpRight, ChevronDown, Code2, Mail, Menu, Moon, Sun, X } from "lucide-react";
 import { projects, services, techGroups } from "@/lib/control-room-data";
 import { useWorldStore } from "@/lib/world-state";
 import Terminal from "./Terminal";
@@ -31,8 +31,46 @@ export default function ControlRoom() {
       <section id="projects" className="section-shell projects-section"><SectionHead number="02" title="PROJECT LAB" copy="A selection of systems and experiences built for specific businesses and workflows."/><div className="project-grid">{projects.map((p,i) => <article className={`project-card ${p.shape}`} key={p.code} onClick={() => {setInspect(p);emit({type:"PROJECT_INSPECT_OPEN",id:p.code})}} tabIndex={0} onKeyDown={(e) => {if(e.key === "Enter"){setInspect(p);emit({type:"PROJECT_INSPECT_OPEN",id:p.code})}}}><div className="project-visual"><i/><i/><span>{String(i+1).padStart(2,"0")}</span></div><div><p>{p.code} / {p.type}</p><h3>{p.name}</h3><p className="project-desc">{p.desc}</p><div className="tags">{p.tech.map(t => <span key={t}>{t}</span>)}</div><button className="inspect-button">INSPECT SYSTEM <ArrowUpRight/></button></div></article>)}</div></section>
       <section id="engineering" className="section-shell engineering-section"><SectionHead number="03" title="ENGINEERING" copy="A practical technical toolkit chosen around the needs of each project."/><div className="engineering-layout"><div className="network"><span>CLIENT</span><i/><span>SERVER</span><i/><span>DATABASE</span><b/><b/><b/></div><div className="tech-list">{techGroups.map(([title,items],i) => <article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{items}</p></article>)}</div></div></section>
       <section id="about" className="section-shell about-section"><SectionHead number="04" title="SYSTEM HISTORY" copy="An independent practice, built incrementally around meaningful client work."/><ol className="timeline"><li><b>2023</b><div><span>FREELANCE / DIGITAL SOLUTIONS</span><p>WEB DZ begins building tailored websites and digital experiences.</p></div></li><li><b>2024</b><div><span>PROJECTS / APPLICATIONS / CLIENT SOLUTIONS</span><p>Expanding into connected applications, business workflows, and product-focused delivery.</p></div></li><li><b>NOW</b><div><span>ENGINEERING BETTER DIGITAL SYSTEMS</span><p>Combining web, mobile, data, APIs and practical AI integration where it creates value.</p></div></li></ol></section>
-      <section id="contact" className="section-shell contact-section"><p className="eyebrow">05 / COMMUNICATION NODE <em/> READY</p><h2>LET’S BUILD<br/><span>SOMETHING.</span></h2><p>Web development · Mobile applications · Desktop applications · AI integration · Custom digital solutions.</p><div className="contact-actions"><a className="cta" href="mailto:aben7400@gmail.com">START A CONVERSATION <Mail/></a><a href="tel:+213699745419">+213 558 982 625</a><span>SIDI BEL ABBÈS, ALGERIA</span></div><footer>© {new Date().getFullYear()} WEB DZ SERVICES <span>BUILT FOR THE NEXT SYSTEM.</span></footer></section>
+      <section id="contact" className="section-shell contact-section"><p className="eyebrow">05 / COMMUNICATION NODE <em/> READY</p><h2>LET’S BUILD<br/><span>SOMETHING.</span></h2><p>Web development · Mobile applications · Desktop applications · AI integration · Custom digital solutions.</p><div className="contact-panel"><ContactCta /><div className="contact-meta"><article><span>EMAIL</span><p><a href="mailto:Undrivable22@gmail.com">Undrivable22@gmail.com</a><i/><a href="mailto:aben7400@gmail.com">aben7400@gmail.com</a></p></article><article><span>PHONE</span><p><a href="tel:+15103138848">+(1) 510 313 8848</a><i/><a href="tel:+213558982625">(+213) 055 898 2625</a></p></article><article><span>LOCATION</span><p>SIDI BEL ABBÈS, ALGERIA</p></article></div></div><footer>© {new Date().getFullYear()} WEB DZ SERVICES <span>BUILT FOR THE NEXT SYSTEM.</span></footer></section>
     </main><button className="terminal-toggle" onClick={() => emit({type:"TERMINAL_OPEN"})}>COMMAND /_</button><Terminal />{inspect && <div className="inspect-mode" role="dialog" aria-modal="true"><button className="inspect-close" onClick={() => {setInspect(null);emit({type:"PROJECT_INSPECT_CLOSE"})}}>CLOSE <X/></button><div className={`inspect-object ${inspect.shape}`}><i/><i/><i/></div><div className="inspect-hud"><p>INSPECT MODE / {inspect.code}</p><h2>{inspect.name}</h2><span>{inspect.type}</span><p className="inspect-description">{inspect.desc}</p><div className="tags">{inspect.tech.map(t=><span key={t}>{t}</span>)}</div><div className="hud-status"><span>ENVIRONMENT</span><b>ONLINE</b><span>MODULES</span><b>ACTIVE</b><span>DATA LINK</span><b>STABLE</b></div><a className="cta" href={inspect.href} target={inspect.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">OPEN PROJECT <ArrowUpRight/></a></div></div>}
   </div>;
 }
 function SectionHead({number,title,copy}:{number:string,title:string,copy:string}) { return <div className="section-head"><p>{number} / SECTOR</p><h2>{title}</h2><span>{copy}</span></div>; }
+
+const emails = [
+  { label: "Undrivable22@gmail.com", href: "mailto:Undrivable22@gmail.com", note: "PREFERRED", preferred: true },
+  { label: "aben7400@gmail.com", href: "mailto:aben7400@gmail.com", note: "ALTERNATE", preferred: false },
+];
+
+function ContactCta() {
+  const [open, setOpen] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => { if (!root.current?.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    addEventListener("pointerdown", onPointer);
+    addEventListener("keydown", onKey);
+    return () => { removeEventListener("pointerdown", onPointer); removeEventListener("keydown", onKey); };
+  }, [open]);
+  return (
+    <div className="contact-cta" ref={root}>
+      <div className="contact-cta-split">
+        <a className="cta" href="mailto:Undrivable22@gmail.com">START A CONVERSATION <Mail/></a>
+        <button className="contact-cta-toggle" type="button" aria-haspopup="menu" aria-expanded={open} aria-label="Choose an email" onClick={() => setOpen(v => !v)}>
+          <ChevronDown />
+        </button>
+      </div>
+      {open && (
+        <div className="contact-menu" role="menu">
+          {emails.map(email => (
+            <a key={email.href} role="menuitem" className={email.preferred ? "is-preferred" : undefined} href={email.href} onClick={() => setOpen(false)}>
+              <small>{email.note}</small>
+              {email.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
